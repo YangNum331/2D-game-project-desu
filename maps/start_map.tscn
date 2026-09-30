@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/game_map.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/spawn_point.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/transition_area.tscn" id="3"]
+[node name="StartMap" type="Node2D"]
+script = ExtResource("1")
+[node name="Walls" type="Node2D" parent="."]
+[node name="Actors" type="Node2D" parent="."]
+y_sort_enabled = true
+[node name="SpawnPoints" type="Node2D" parent="."]
+[node name="start" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(304, 280)
+script = ExtResource("2")
+spawn_id = "start"
+[node name="north_entrance" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(304, 64)
+script = ExtResource("2")
+spawn_id = "north_entrance"
+[node name="Transitions" type="Node2D" parent="."]
+[node name="NorthExit" parent="Transitions" instance=ExtResource("3")]
+position = Vector2(304, 24)
+transition_id = "north_exit"
+area_size = Vector2(96, 24)
